@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="@color/Gray"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txt_ClasseTopic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="classe"
+                android:textSize="18sp"
+                android:layout_margin="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/txt_ponto_Medio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="P.Medio"
+                android:textSize="18sp"
+                android:layout_margin="10dp"
+                app:layout_constraintStart_toEndOf="@id/txt_ClasseTopic"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/txt_Frequencia_Abs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fq.Abs"
+                android:textSize="18sp"
+                android:layout_margin="10dp"
+                app:layout_constraintStart_toEndOf="@id/txt_ponto_Medio"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/txt_Freq_relativa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fq.Rel"
+                android:textSize="18sp"
+                android:layout_margin="10dp"
+                app:layout_constraintStart_toEndOf="@id/txt_Frequencia_Abs"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/txt_Freq_Acumulativa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fq.Acu"
+                android:textSize="18sp"
+                android:layout_margin="10dp"
+                app:layout_constraintStart_toEndOf="@id/txt_Freq_relativa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+            <TextView
+                android:id="@+id/txt_classe_valu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2-10"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/txt_ClasseTopic"
+                app:layout_constraintTop_toBottomOf="@id/txt_ClasseTopic"
+                app:layout_constraintEnd_toEndOf="@id/txt_ClasseTopic"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/txt_pMedio_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2-10"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/txt_ponto_Medio"
+                app:layout_constraintTop_toBottomOf="@id/txt_ponto_Medio"
+                app:layout_constraintEnd_toEndOf="@id/txt_ponto_Medio"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/txt_freqAbs_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2-10"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/txt_Frequencia_Abs"
+                app:layout_constraintTop_toBottomOf="@id/txt_Frequencia_Abs"
+                app:layout_constraintEnd_toEndOf="@id/txt_Frequencia_Abs"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/txt_freqRel_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2-10"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/txt_Freq_relativa"
+                app:layout_constraintTop_toBottomOf="@id/txt_Freq_relativa"
+                app:layout_constraintEnd_toEndOf="@id/txt_Freq_relativa"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/txt_freAcu_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2-10"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/txt_Freq_Acumulativa"
+                app:layout_constraintTop_toBottomOf="@id/txt_Freq_Acumulativa"
+                app:layout_constraintEnd_toEndOf="@id/txt_Freq_Acumulativa"
+                android:layout_margin="10dp"/>
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@drawable/data_img"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txt_title"
+        style="@android:style/Animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Distribuição de Frequencia"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_Card_values"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txt_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="24dp"
+        android:translationY="15dp"
+        app:cardElevation="4dp"
+
+        android:layout_margin="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/Gray"
+            >
+            <EditText
+                android:id="@id/edt_values"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cole os dados da Planilha"
+                android:gravity="center"
+                android:inputType="text|number"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+            <EditText
+                android:id="@+id/edt_num_classe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nº de Classes"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_margin="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edt_values"
+                />
+
+            <Button
+                android:id="@+id/btn_calcular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Calcular"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edt_num_classe" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="16dp"
+        android:visibility="visible"
+        tools:listitem="@layout/classe_item"
+        app:layout_constraintTop_toBottomOf="@id/cv_Card_values"
+        app:layout_constraintStart_toStartOf="@id/cv_Card_values"
+        app:layout_constraintEnd_toEndOf="@id/cv_Card_values"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
