@@ -1,4 +1,4 @@
-package adapter
+package com.example.distribuiao_frequencia.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,45 +6,35 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.distribuiao_frequencia.IntervaloClasseProvider
 import com.example.distribuiao_frequencia.R
 import model.InfoDistribuiçaoFreq
 
-class DistribuiçaoFrequencia_Adapter (
+class DistribuiçaoFrequencia_Adapter(
     private val context: Context,
-    private val dbFrequencia: List<IntervaloClasseProvider>
-): RecyclerView.Adapter<DistribuiçaoFrequencia_Adapter.IntervaloClasseProviderViewHolder>(){
+    private val frequenciaList: List<InfoDistribuiçaoFreq>
+) : RecyclerView.Adapter<DistribuiçaoFrequencia_Adapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): IntervaloClasseProviderViewHolder {
-        val itemLista = LayoutInflater.from(context).inflate(R.layout.classe_item,parent,false)
-        val holder = IntervaloClasseProviderViewHolder(itemLista)
-        return holder
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val txtClasseValue: TextView = view.findViewById(R.id.txt_classe_valu)
+        val txtPMedioValue: TextView = view.findViewById(R.id.txt_pMedio_value)
+        val txtFreqAbsValue: TextView = view.findViewById(R.id.txt_freqAbs_value)
+        val txtFreqRelValue: TextView = view.findViewById(R.id.txt_freqRel_value)
+        val txtFreqAcuValue: TextView = view.findViewById(R.id.txt_freAcu_value)
     }
 
-    override fun onBindViewHolder(holder: IntervaloClasseProviderViewHolder, position: Int) {
-        holder.classe.text = dbFrequencia[position].listaDosIntervalosClasse().toString()
- //       holder.pMedio.text = dbFrequencia[position].calcularPontoMedio
-//        holder.freqAbs.text = dbFrequencia[position].freqAbsoluta
-//        holder.freqRel.text = dbFrequencia[position].freqRelativa
-//        holder.freqAcu.text = dbFrequencia[position].freqAcumulativa
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.classe_item, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = dbFrequencia.size
-
-
-
-    inner class IntervaloClasseProviderViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val classe = itemView.findViewById<TextView>(R.id.txt_classe_valu)
-        val pMedio = itemView.findViewById<TextView>(R.id.txt_pMedio_value)
-        val freqAbs = itemView.findViewById<TextView>(R.id.txt_freqAbs_value)
-        val freqRel = itemView.findViewById<TextView>(R.id.txt_freqRel_value)
-        val freqAcu = itemView.findViewById<TextView>(R.id.txt_freAcu_value)
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val frequencia = frequenciaList[position]
+        holder.txtClasseValue.text = frequencia.classe
+        holder.txtPMedioValue.text = String.format("%.2f", frequencia.pontoMedio)
+        holder.txtFreqAbsValue.text = frequencia.frequenciaAbsoluta.toString()
+        holder.txtFreqRelValue.text = String.format("%.2f%%", frequencia.frequenciaRelativa * 100)
+        holder.txtFreqAcuValue.text = String.format("%.2f%%", frequencia.frequenciaAcumulativa * 100)
     }
 
-
-
+    override fun getItemCount(): Int = frequenciaList.size
 }

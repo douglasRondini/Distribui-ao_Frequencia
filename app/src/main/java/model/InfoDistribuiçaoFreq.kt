@@ -2,10 +2,10 @@ package model
 
 class InfoDistribuiçaoFreq (
     val classe: String,
-    val pMedio: String,
-    val freqAbsoluta: String,
-    val freqRelativa: String,
-    val freqAcumulativa: String
+    val pontoMedio: Double,
+    val frequenciaAbsoluta: Int,
+    val frequenciaRelativa: Double,
+    val frequenciaAcumulativa: Double
 )
 
 
