@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnCalcular.setOnClickListener {
             if (dados.isEmpty() || classes.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os Campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
             listDistribuiçaoFreq()
             clear()
