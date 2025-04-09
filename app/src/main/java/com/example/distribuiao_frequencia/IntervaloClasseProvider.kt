@@ -59,12 +59,12 @@ class IntervaloClasseProvider(private val binding: ActivityMainBinding) {
         return acumulativas
     }
 
-    fun incementoLimiteSuperior(lista: List<Double>, incremento: Int, quantidade: Int?): List<Double> {
+    fun incementoLimiteSuperior(lista: List<Double>, incremento: Double, quantidade: Int?): List<Double> {
         val limiteSuperior = mutableListOf<Double>()
         val minValue = lista[1] ?: return limiteSuperior
         quantidade?.let {
             for (i in 0 until it) {
-                limiteSuperior.add(minValue-1 + (i*incremento))
+                limiteSuperior.add(minValue-0.1 + (i*incremento))
             }
         }
         return limiteSuperior
@@ -81,7 +81,7 @@ class IntervaloClasseProvider(private val binding: ActivityMainBinding) {
         return result
     }
 
-    fun incementoLimiteInferior(lista: List<Double>, incremento: Int, quantidade: Int?): List<Double> {
+    fun incementoLimiteInferior(lista: List<Double>, incremento: Double, quantidade: Int?): List<Double> {
         val limiteInferior = mutableListOf<Double>()
         val minValue = lista.minOrNull() ?: return limiteInferior
         quantidade?.let {
@@ -103,10 +103,10 @@ class IntervaloClasseProvider(private val binding: ActivityMainBinding) {
         return result
     }
 
-    fun intervaloClass(): Int {
+    fun intervaloClass(): Double {
         val numberClass = binding.edtNumClasse.text.toString().toDouble()
-        val intervalo = amplitude()/numberClass
-        return intervalo.toInt()
+        val intervalo = String.format("%.1f",amplitude()/numberClass)
+        return intervalo.toDouble()
     }
 
     fun amplitude(): Double {
@@ -118,6 +118,6 @@ class IntervaloClasseProvider(private val binding: ActivityMainBinding) {
 
     fun listDados(): List<Double> {
         val dados = binding.edtValues.text.toString()
-        return dados.split(",").map { it.trim().toDouble() }
+        return dados.split(" ").map { it.toDouble() }
     }
 }
