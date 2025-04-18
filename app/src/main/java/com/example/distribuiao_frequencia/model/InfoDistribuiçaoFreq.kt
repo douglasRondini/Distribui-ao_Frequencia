@@ -1,4 +1,4 @@
-package model
+package com.example.distribuiao_frequencia.model
 
 class InfoDistribuiçaoFreq (
     val classe: String,

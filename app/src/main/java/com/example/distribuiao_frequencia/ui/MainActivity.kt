@@ -1,14 +1,15 @@
-package com.example.distribuiao_frequencia
+package com.example.distribuiao_frequencia.ui
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.text.set
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.distribuiao_frequencia.presenter.IntervaloClasseProvider
+import com.example.distribuiao_frequencia.R
 import com.example.distribuiao_frequencia.adapter.DistribuiçaoFrequencia_Adapter
 import com.example.distribuiao_frequencia.databinding.ActivityMainBinding
 
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         listFreq = binding.rvRecycleView
         listFreq.layoutManager = LinearLayoutManager(this)
+        listFreq.setHasFixedSize(true)
     }
 
     private fun listDistribuiçaoFreq() {

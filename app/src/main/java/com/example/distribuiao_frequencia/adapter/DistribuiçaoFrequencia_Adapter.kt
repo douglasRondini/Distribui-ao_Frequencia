@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.distribuiao_frequencia.R
-import model.InfoDistribuiçaoFreq
+import com.example.distribuiao_frequencia.model.InfoDistribuiçaoFreq
 
 class DistribuiçaoFrequencia_Adapter(
     private val context: Context,
@@ -30,10 +30,10 @@ class DistribuiçaoFrequencia_Adapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val frequencia = frequenciaList[position]
         holder.txtClasseValue.text = frequencia.classe
-        holder.txtPMedioValue.text = String.format("%.2f", frequencia.pontoMedio)
+        holder.txtPMedioValue.text = String.format("%.1f", frequencia.pontoMedio)
         holder.txtFreqAbsValue.text = frequencia.frequenciaAbsoluta.toString()
-        holder.txtFreqRelValue.text = String.format("%.2f%%", frequencia.frequenciaRelativa * 100)
-        holder.txtFreqAcuValue.text = String.format("%.2f%%", frequencia.frequenciaAcumulativa * 100)
+        holder.txtFreqRelValue.text = String.format("%.1f%%", frequencia.frequenciaRelativa * 100)
+        holder.txtFreqAcuValue.text = String.format("%.1f%%", frequencia.frequenciaAcumulativa * 100)
     }
 
     override fun getItemCount(): Int = frequenciaList.size

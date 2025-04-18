@@ -1,7 +1,9 @@
-package com.example.distribuiao_frequencia
+package com.example.distribuiao_frequencia.presenter
 
 import com.example.distribuiao_frequencia.databinding.ActivityMainBinding
-import model.InfoDistribuiçaoFreq
+import com.example.distribuiao_frequencia.model.InfoDistribuiçaoFreq
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class IntervaloClasseProvider(private val binding: ActivityMainBinding) {
     fun listaDosIntervalosClasse(): List<InfoDistribuiçaoFreq> {
@@ -59,12 +61,12 @@ class IntervaloClasseProvider(private val binding: ActivityMainBinding) {
         return acumulativas
     }
 
-    fun incementoLimiteSuperior(lista: List<Double>, incremento: Double, quantidade: Int?): List<Double> {
+    fun incementoLimiteSuperior(lista: List<Double>, incremento: Double, quantidade: Double?): List<Double> {
         val limiteSuperior = mutableListOf<Double>()
-        val minValue = lista[1] ?: return limiteSuperior
+        val minValue = lista[1]-0.1 ?: return limiteSuperior
         quantidade?.let {
-            for (i in 0 until it) {
-                limiteSuperior.add(minValue-0.1 + (i*incremento))
+            for (i in 0 until it.toInt()) {
+                limiteSuperior.add(minValue + (i*incremento))
             }
         }
         return limiteSuperior
@@ -72,20 +74,20 @@ class IntervaloClasseProvider(private val binding: ActivityMainBinding) {
 
     fun limiteSuperior(): List<Double> {
         val list = limiteInferior()
-        val classe = binding.edtNumClasse.text.toString()
+        val classe = binding.edtNumClasse.text.toString().toDouble()
         val result = incementoLimiteSuperior(
             list,
             incremento = intervaloClass(),
-            quantidade = classe.toInt()
+            quantidade = classe
         )
         return result
     }
 
-    fun incementoLimiteInferior(lista: List<Double>, incremento: Double, quantidade: Int?): List<Double> {
+    fun incementoLimiteInferior(lista: List<Double>, incremento: Double, quantidade: Double): List<Double> {
         val limiteInferior = mutableListOf<Double>()
         val minValue = lista.minOrNull() ?: return limiteInferior
         quantidade?.let {
-            for (i in 0 until it) {
+            for (i in 0 until it.toInt()) {
                 limiteInferior.add(minValue + (i*incremento))
             }
         }
@@ -94,19 +96,20 @@ class IntervaloClasseProvider(private val binding: ActivityMainBinding) {
 
     fun limiteInferior(): List<Double> {
         val list = listDados()
-        val classe = binding.edtNumClasse.text.toString()
+        val classe = binding.edtNumClasse.text.toString().toDouble()
         val result = incementoLimiteInferior(
             list,
             incremento = intervaloClass(),
-            quantidade = classe.toInt()
+            quantidade = classe
         )
         return result
     }
 
     fun intervaloClass(): Double {
         val numberClass = binding.edtNumClasse.text.toString().toDouble()
-        val intervalo = String.format("%.1f",amplitude()/numberClass)
-        return intervalo.toDouble()
+        val intervalo = amplitude()/numberClass
+        val result = BigDecimal(intervalo).setScale(1, RoundingMode.HALF_UP)
+        return result.toDouble()
     }
 
     fun amplitude(): Double {

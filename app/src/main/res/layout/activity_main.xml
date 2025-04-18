@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
 
     android:background="@drawable/data_img"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <TextView
         android:id="@+id/txt_title"
